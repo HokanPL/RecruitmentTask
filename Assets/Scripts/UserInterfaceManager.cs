@@ -5,11 +5,43 @@ using UnityEngine.UI;
 
 public class UserInterfaceManager : MonoBehaviour
 {
-    public Button firstButton;
-    public Button secondButton;
-    public Button thirdButton;
+    public static UserInterfaceManager Instance;
 
-    public Button closePanel;
+    public Button first;
+    public Button second;
+    public Button third;
+
+    public PopupPanel popupPanel;
+    //public Button closePopupImage;
+
+    //public Text popupText;
 
     public Toggle[] audioToggles;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
+
+        first.gameObject.SetActive(true);
+        second.gameObject.SetActive(true);
+        third.gameObject.SetActive(true);
+
+        popupPanel.gameObject.SetActive(false);
+        //closePopupImage.gameObject.SetActive(false);
+
+        foreach (Toggle t in audioToggles)
+        {
+            t.gameObject.SetActive(true);
+            t.isOn = true;
+        }
+    }
+
+    public void FirstButton(PopupPanel popup)
+    {
+        popup.gameObject.SetActive(true);
+        popup.enabled = true;
+    }
+
+
 }
