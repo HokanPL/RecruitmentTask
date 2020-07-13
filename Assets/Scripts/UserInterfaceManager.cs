@@ -37,10 +37,17 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
-    public void FirstButton(PopupPanel popup)
+    public void InvokePopup(PopupPanel popup)
     {
         popup.gameObject.SetActive(true);
         popup.enabled = true;
+    }
+    public void InvokePopup(PopupText popup)
+    {
+        popup.gameObject.SetActive(true);
+        popup.enabled = true;
+        popup.StopAllCoroutines();
+        popup.StartCoroutine(popup.Run());
     }
 
 

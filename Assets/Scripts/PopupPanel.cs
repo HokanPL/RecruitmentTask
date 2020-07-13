@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PopupPanel : MonoBehaviour
@@ -20,6 +19,7 @@ public class PopupPanel : MonoBehaviour
 
     private void OnDisable()
     {
+        StopAllCoroutines();
         SetAllElementsActive(false);
     }
 
