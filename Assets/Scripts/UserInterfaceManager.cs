@@ -18,6 +18,7 @@ public class UserInterfaceManager : MonoBehaviour
     public Button third;
 
     public PopupPanel popupPanel;
+    public PopupText popupText;
     public AudioToggle[] audioToggles;
     
     
@@ -31,7 +32,8 @@ public class UserInterfaceManager : MonoBehaviour
         third.gameObject.SetActive(true);
 
         popupPanel.gameObject.SetActive(false);
-        
+        popupText.gameObject.SetActive(false);
+
         foreach (AudioToggle t in audioToggles)
         {
             t.toggle.gameObject.SetActive(true);
@@ -45,6 +47,7 @@ public class UserInterfaceManager : MonoBehaviour
         popup.gameObject.SetActive(true);
         popup.enabled = true;
     }
+
     public void InvokePopup(PopupText popup)
     {
         popup.gameObject.SetActive(true);
