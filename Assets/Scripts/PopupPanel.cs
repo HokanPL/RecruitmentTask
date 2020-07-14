@@ -40,5 +40,4 @@ public class PopupPanel : MonoBehaviour
         gameObject.SetActive(false);
         enabled = false;
     }
-
 }

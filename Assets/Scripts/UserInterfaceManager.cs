@@ -65,8 +65,5 @@ public class UserInterfaceManager : MonoBehaviour
 
         AudioManager.Instance.audioSource.clip = clipsToPlay[idToPlay];
         AudioManager.Instance.audioSource.Play();
-        
     }
-
-
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,7 +12,10 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) Destroy(gameObject);
         else Instance = this;
+    }
 
+    private void Start()
+    {
         clipsOnClick = new AudioClip[UserInterfaceManager.Instance.audioToggles.Length];
     }
 }

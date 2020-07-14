@@ -11,11 +11,6 @@ public class PopupText : MonoBehaviour
         enabled = false;
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
     private void OnDisable()
     {
         StopAllCoroutines();
