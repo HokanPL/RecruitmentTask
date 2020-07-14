@@ -1,7 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+[System.Serializable]
+public class AudioToggle
+{
+    public Toggle toggle;
+    public AudioClip clip;
+}
 
 public class UserInterfaceManager : MonoBehaviour
 {
@@ -12,12 +18,9 @@ public class UserInterfaceManager : MonoBehaviour
     public Button third;
 
     public PopupPanel popupPanel;
-    //public Button closePopupImage;
-
-    //public Text popupText;
-
-    public Toggle[] audioToggles;
-
+    public AudioToggle[] audioToggles;
+    
+    
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(gameObject);
@@ -28,13 +31,13 @@ public class UserInterfaceManager : MonoBehaviour
         third.gameObject.SetActive(true);
 
         popupPanel.gameObject.SetActive(false);
-        //closePopupImage.gameObject.SetActive(false);
-
-        foreach (Toggle t in audioToggles)
+        
+        foreach (AudioToggle t in audioToggles)
         {
-            t.gameObject.SetActive(true);
-            t.isOn = true;
+            t.toggle.gameObject.SetActive(true);
+            t.toggle.isOn = true;
         }
+
     }
 
     public void InvokePopup(PopupPanel popup)
@@ -48,6 +51,21 @@ public class UserInterfaceManager : MonoBehaviour
         popup.enabled = true;
         popup.StopAllCoroutines();
         popup.StartCoroutine(popup.Run());
+    }
+    public void InvokeRandomAudioPlaying()
+    {
+        List<AudioClip> clipsToPlay = new List<AudioClip>();
+
+        for (int i = 0; i < audioToggles.Length; i++)
+        {
+            if (audioToggles[i].toggle.isOn) clipsToPlay.Add(audioToggles[i].clip);
+        }
+
+        int idToPlay = Random.Range(0, clipsToPlay.Count);
+
+        AudioManager.Instance.audioSource.clip = clipsToPlay[idToPlay];
+        AudioManager.Instance.audioSource.Play();
+        
     }
 
 
