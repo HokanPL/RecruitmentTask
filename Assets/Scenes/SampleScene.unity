@@ -1527,6 +1527,7 @@ MonoBehaviour:
   second: {fileID: 1767024024}
   third: {fileID: 1826403137}
   popupPanel: {fileID: 1877734322}
+  popupText: {fileID: 900858265}
   audioToggles:
   - toggle: {fileID: 1732625015}
     clip: {fileID: 8300000, guid: f7275a6f9d8002d41a3e84583355473d, type: 3}

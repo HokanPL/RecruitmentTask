@@ -64,9 +64,12 @@ public class UserInterfaceManager : MonoBehaviour
             if (audioToggles[i].toggle.isOn) clipsToPlay.Add(audioToggles[i].clip);
         }
 
-        int idToPlay = Random.Range(0, clipsToPlay.Count);
+        if (clipsToPlay.Count > 0)
+        {
+            int idToPlay = Random.Range(0, clipsToPlay.Count);
 
-        AudioManager.Instance.audioSource.clip = clipsToPlay[idToPlay];
-        AudioManager.Instance.audioSource.Play();
+            AudioManager.Instance.audioSource.clip = clipsToPlay[idToPlay];
+            AudioManager.Instance.audioSource.Play();
+        }
     }
 }
